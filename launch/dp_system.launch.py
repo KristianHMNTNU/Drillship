@@ -36,10 +36,17 @@ def generate_launch_description():
         name='pathplanner_node'
     )
 
+    drillship_utility_node = Node(
+        package='drillship_sim',
+        executable='drillship_utility_node',         # <-- må matche setup.py entry_points
+        name='drillship_utility_node'
+    )
+
     return LaunchDescription([
         joy_node,
         ta_node,
         controller_node,
         npo_node,
-        pathplanner_node
+        pathplanner_node,
+        drillship_utility_node
     ])
