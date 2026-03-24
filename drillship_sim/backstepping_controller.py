@@ -16,8 +16,8 @@ class backstepping_controller:
             [0.0, 0.0, 0.0168]
         ])
 
-        self.K1 = np.diag([1.5, 1.5, 2.0])
-        self.K2 = np.diag([3.5, 3.5, 4.0])
+        self.K1 = np.diag([10.0, 10.0, 2.0])
+        self.K2 = np.diag([20.0, 20.0, 5.0])
         #self.K1 = np.diag([1.0, 1.0, 1.0])
         #self.K2 = np.diag([5.0, 5.0, 2.0])
 
@@ -35,6 +35,8 @@ class backstepping_controller:
             [0, 0, 1]
         ])
 
+    def wrap_to_pi(self, angle):
+        return (angle + np.pi) % (2*np.pi) - np.pi
 
     def step(self, eta_hat, nu_hat, b_hat, eta_d, eta_d_s, eta_d_ss, v_s, v_s_s, s_dot):
 
@@ -43,6 +45,7 @@ class backstepping_controller:
         R = self.R(psi)
 
         z1 = R.T @ (eta_hat - eta_d)
+        z1[2] = self.wrap_to_pi(eta_hat[2] - eta_d[2])
 
         alpha1 = -self.K1 @ z1 + R.T @ eta_d_s * v_s
 
