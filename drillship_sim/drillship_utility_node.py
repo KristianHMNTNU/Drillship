@@ -18,15 +18,13 @@ class DrillshipUtilityNode(Node):
         super().__init__('drillship_utility', namespace='drillship')
 
         self.thruster_names = [
-            'bow_center',
             'bow_port',
             'bow_starboard',
-            'stern_center',
             'stern_port',
             'stern_starboard',
         ]
 
-        self.F_max = [1.0] * 6
+        self.F_max = [1.0] * 4
 
         self.pubs = {}
         for name in self.thruster_names:
@@ -62,14 +60,14 @@ class DrillshipUtilityNode(Node):
         self.nu = np.zeros(3)
 
     def u_callback(self, msg: Float32MultiArray):
-        if len(msg.data) != 12:
+        if len(msg.data) != 8:
             self.get_logger().warn(
-                f'Expected 12 values in /tmr4243/command/u, got {len(msg.data)}'
+                f'Expected 8 values in /tmr4243/command/u, got {len(msg.data)}'
             )
             return
 
-        u = msg.data[:6]
-        alpha = msg.data[6:]
+        u = msg.data[:4]
+        alpha = msg.data[4:]
 
         for i, name in enumerate(self.thruster_names):
             ui = max(min(float(u[i]), 1.0), -1.0)
