@@ -19,7 +19,7 @@ class PathPlannerNode(Node):
 
         self.psi_ref = 0.0
         self.U_ref = 0.0
-        self.mu = 0.2
+        self.mu = 0.001
 
         self.p0 = np.array([0.0, 0.0])
         self.p1 = np.array([0.0, 0.0])

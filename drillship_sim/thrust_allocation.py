@@ -18,11 +18,14 @@ class ThrustAllocator:
         lx6 = -0.991
         ly6 = 0.164
 
+        # 6 Thrusters
         self.B = np.array([      
         [1,       0,       1,       0,       1,       0,      1,       0,       1,       0,       1,       0], 
         [0,       1,       0,       1,       0,      1,      0,       1,       0,       1,       0,       1],
         [-ly1,    lx1,     -ly2,    lx2,     -ly3,    lx3,   -ly4,     lx4,   -ly5,     lx5,   -ly6,     lx6]
         ], dtype='float')
+
+
 
         self.K = np.eye(6)
 

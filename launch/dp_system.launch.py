@@ -21,7 +21,8 @@ def generate_launch_description():
     npo_node = Node(
         package='drillship_sim',
         executable='npo_node',         # <-- må matche setup.py entry_points
-        name='npo_node'
+        name='npo_node',
+        namespace='drillship'
     )
 
     controller_node = Node(
@@ -39,7 +40,8 @@ def generate_launch_description():
     drillship_utility_node = Node(
         package='drillship_sim',
         executable='drillship_utility_node',         # <-- må matche setup.py entry_points
-        name='drillship_utility_node'
+        name='drillship_utility_node',
+        namespace='drillship'
     )
 
     return LaunchDescription([

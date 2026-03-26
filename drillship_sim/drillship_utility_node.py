@@ -15,9 +15,7 @@ from tf_transformations import euler_from_quaternion
 
 class DrillshipUtilityNode(Node):
     def __init__(self):
-        super().__init__('drillship_utility')
-
-        self.namespace = '/cybership'
+        super().__init__('drillship_utility', namespace='drillship')
 
         self.thruster_names = [
             'bow_center',
@@ -32,7 +30,7 @@ class DrillshipUtilityNode(Node):
 
         self.pubs = {}
         for name in self.thruster_names:
-            topic = f'{self.namespace}/thruster/{name}/command'
+            topic = f'thruster/{name}/command'
             self.pubs[name] = self.create_publisher(Wrench, topic, 1)
 
         self.pub_eta = self.create_publisher(
@@ -55,7 +53,7 @@ class DrillshipUtilityNode(Node):
 
         self.create_subscription(
             Odometry,
-            f'{self.namespace}/measurement/odom',
+            f'measurement/odom',
             self.odom_callback,
             10
         )
