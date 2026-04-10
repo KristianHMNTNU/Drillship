@@ -22,7 +22,7 @@ class NPOObserverNode(Node):
 
         self.create_subscription(
             Float32MultiArray,
-            '/tmr4243/state/eta',
+            '/kris/state/eta',
             self.cb_eta,
             10
         )

@@ -24,7 +24,7 @@ class PS5ToTau(Node):
         self.sub_joy = self.create_subscription(Joy, '/joy', self.cb_joy, 10)
         self.sub_eta = self.create_subscription(
             Float32MultiArray,
-            '/tmr4243/state/eta',
+            '/kris/state/eta',
             self.cb_eta,
             10
         )

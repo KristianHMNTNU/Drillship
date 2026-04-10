@@ -27,19 +27,19 @@ def generate_launch_description():
 
     controller_node = Node(
         package='drillship_sim',
-        executable='controller_node',         # <-- må matche setup.py entry_points
+        executable='controller_node',         
         name='controller_node'
     )
 
     pathplanner_node = Node(
         package='drillship_sim',
-        executable='pathplanner_node',         # <-- må matche setup.py entry_points
+        executable='pathplanner_node',         
         name='pathplanner_node'
     )
 
     drillship_utility_node = Node(
         package='drillship_sim',
-        executable='drillship_utility_node',         # <-- må matche setup.py entry_points
+        executable='drillship_utility_node',        
         name='drillship_utility_node',
         namespace='drillship'
     )

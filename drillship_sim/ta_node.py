@@ -19,8 +19,8 @@ class TANode(Node):
         )
 
         # Publishers 
-        self.pub_u = self.create_publisher(Float32MultiArray, 'tmr4243/command/u', 10)
-        self.pub_F = self.create_publisher(Float32MultiArray,'tmr4243/command/F_cmd', 10)
+        self.pub_u = self.create_publisher(Float32MultiArray, 'kris/command/u', 10)
+        self.pub_F = self.create_publisher(Float32MultiArray,'kris/command/F_cmd', 10)
 
     def cb(self, msg):
         tau_cmd = np.array(msg.data, dtype=float)

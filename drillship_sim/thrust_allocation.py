@@ -40,7 +40,7 @@ class ThrustAllocator:
         self.W = np.eye(8)
 
         self.f_d = np.zeros(8, dtype='float')
-        #self.f_d = np.array([0.0, 0.001, 0.0, -0.001, 0.0], dtype='float')
+        self.f_d = np.array([0.0, 0.01, 0.0, -0.01, 0.0, 0.01, 0.0, -0.01], dtype='float')
 
     def weighted_pinv(self):
         #" B_W^† = W^{-1} B^T (B W^{-1} B^T)^-1 "

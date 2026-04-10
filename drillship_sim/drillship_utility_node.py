@@ -33,18 +33,18 @@ class DrillshipUtilityNode(Node):
 
         self.pub_eta = self.create_publisher(
             Float32MultiArray,
-            '/tmr4243/state/eta',
+            '/kris/state/eta',
             1
         )
         self.pub_nu = self.create_publisher(
             Float32MultiArray,
-            '/tmr4243/state/nu',
+            '/kris/state/nu',
             1
         )
 
         self.create_subscription(
             Float32MultiArray,
-            '/tmr4243/command/u',
+            '/kris/command/u',
             self.u_callback,
             10
         )
@@ -62,13 +62,12 @@ class DrillshipUtilityNode(Node):
     def u_callback(self, msg: Float32MultiArray):
         if len(msg.data) != 8:
             self.get_logger().warn(
-                f'Expected 8 values in /tmr4243/command/u, got {len(msg.data)}'
+                f'Expected 8 values in /kris/command/u, got {len(msg.data)}'
             )
             return
 
         u = msg.data[:4]
         alpha = msg.data[4:]
-
         for i, name in enumerate(self.thruster_names):
             ui = max(min(float(u[i]), 1.0), -1.0)
             ai = float(alpha[i])
