@@ -32,7 +32,7 @@ planner = StraightLinePathPlanner(
     p0=[0, 0],
     p1=[20, 40],
     psi_d=np.deg2rad(90),
-    U_ref=0.3,
+    U_ref=0.2,
     mu=0.001
 )
 
